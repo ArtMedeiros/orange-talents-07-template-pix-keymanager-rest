@@ -1,0 +1,15 @@
+micronaut:
+  application:
+    name: desafioPixRest
+
+grpc:
+  server:
+    port: 50052
+  client:
+    plaintext: true
+    max-retry-attempts: 10
+  channels:
+    chaves:
+      address: 'localhost:50051'
+      plaintext: true
+      max-retry-attempts: 10
