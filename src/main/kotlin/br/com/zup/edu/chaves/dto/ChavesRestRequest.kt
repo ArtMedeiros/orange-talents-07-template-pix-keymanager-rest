@@ -11,7 +11,7 @@ import javax.validation.constraints.Size
 
 @Introspected
 @ChaveValida
-data class ChaveRequest(
+data class ChavesRestRequest(
     @field:NotNull
     val tipo: TipoChaveLocal,
     @field:Size(max = 77)

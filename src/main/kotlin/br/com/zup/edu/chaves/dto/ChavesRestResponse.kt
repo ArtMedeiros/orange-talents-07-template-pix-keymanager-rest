@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 
 @Introspected
-data class ChaveResponse(
+data class ChavesRestResponse(
     @field:NotBlank
     val tipo: String,
 
@@ -26,14 +26,14 @@ data class ChaveResponse(
 ) {
 
     companion object {
-        fun fromConsultaResponse(response: ConsultaResponse): ChaveResponse {
+        fun fromConsultaResponse(response: ConsultaResponse): ChavesRestResponse {
             val criacao = LocalDateTime.ofEpochSecond(
                 response.chave.criadaEm.seconds,
                 response.chave.criadaEm.nanos,
                 ZoneOffset.UTC
             )
 
-            return ChaveResponse(
+            return ChavesRestResponse(
                 tipo = response.chave.tipo,
                 chave = response.chave.chave,
                 conta = ContaResponse(

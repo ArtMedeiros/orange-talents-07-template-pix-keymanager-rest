@@ -9,14 +9,13 @@ import io.micronaut.grpc.annotation.GrpcChannel
 import jakarta.inject.Singleton
 
 @Factory
-class GrpcClientFactory(@GrpcChannel("chaves") val channel: ManagedChannel) {
+open class GrpcClientFactory(@GrpcChannel("chaves") val channel: ManagedChannel) {
 
     @Singleton
-    fun registraChave() = RegistrarChaveServiceGrpc.newBlockingStub(channel)
+    open fun registraChave() = RegistrarChaveServiceGrpc.newBlockingStub(channel)
 
     @Singleton
     fun removerChave() = RemoverChaveServiceGrpc.newBlockingStub(channel)
-
 
     @Singleton
     fun consultarChave() = ConsultarChaveServiceGrpc.newBlockingStub(channel)

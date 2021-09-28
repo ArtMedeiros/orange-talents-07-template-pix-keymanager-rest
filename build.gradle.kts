@@ -51,6 +51,7 @@ dependencies {
     implementation("mysql:mysql-connector-java:8.0.26")
 
     //Testes
+    testImplementation("org.mockito:mockito-inline:3.8.0")
     testAnnotationProcessor("io.micronaut:micronaut-inject-java")
     testImplementation("io.micronaut:micronaut-http-client")
     testImplementation("org.junit.jupiter:junit-jupiter-api")

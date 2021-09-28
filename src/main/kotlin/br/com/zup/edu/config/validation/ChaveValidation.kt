@@ -1,6 +1,6 @@
 package br.com.zup.edu.config.validation
 
-import br.com.zup.edu.chaves.dto.ChaveRequest
+import br.com.zup.edu.chaves.dto.ChavesRestRequest
 import io.micronaut.core.annotation.AnnotationValue
 import io.micronaut.validation.validator.constraints.ConstraintValidator
 import io.micronaut.validation.validator.constraints.ConstraintValidatorContext
@@ -15,9 +15,9 @@ annotation class ChaveValida(
 )
 
 @Singleton
-class ChaveValidator : ConstraintValidator<ChaveValida, ChaveRequest> {
+class ChaveValidator : ConstraintValidator<ChaveValida, ChavesRestRequest> {
     override fun isValid(
-        value: ChaveRequest,
+        value: ChavesRestRequest,
         annotationMetadata: AnnotationValue<ChaveValida>,
         context: ConstraintValidatorContext
     ): Boolean {
