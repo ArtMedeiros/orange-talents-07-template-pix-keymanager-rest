@@ -6,34 +6,25 @@ import com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING
 import io.micronaut.core.annotation.Introspected
 import java.time.LocalDateTime
 import java.time.ZoneOffset
-import javax.validation.constraints.NotBlank
-import javax.validation.constraints.NotNull
 
 @Introspected
-data class ChavesRestResponse(
-    @field:NotBlank
+data class DetalhesChaveResponse(
     val tipo: String,
-
-    @field:NotBlank
     val chave: String,
-
-    @field:NotNull
     val conta: ContaResponse,
-
-    @field:NotNull
     @JsonFormat(shape = STRING)
     val criadaEm: LocalDateTime
 ) {
 
     companion object {
-        fun fromConsultaResponse(response: ConsultaResponse): ChavesRestResponse {
+        fun fromConsultaResponse(response: ConsultaResponse): DetalhesChaveResponse {
             val criacao = LocalDateTime.ofEpochSecond(
                 response.chave.criadaEm.seconds,
                 response.chave.criadaEm.nanos,
                 ZoneOffset.UTC
             )
 
-            return ChavesRestResponse(
+            return DetalhesChaveResponse(
                 tipo = response.chave.tipo,
                 chave = response.chave.chave,
                 conta = ContaResponse(

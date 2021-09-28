@@ -1,9 +1,6 @@
 package br.com.zup.edu.chaves.dto
 
-import br.com.zup.edu.ChaveRequest
-import br.com.zup.edu.ConsultaRequest
-import br.com.zup.edu.TipoChave
-import br.com.zup.edu.TipoConta
+import br.com.zup.edu.*
 import br.com.zup.edu.config.validation.ChaveValida
 import io.micronaut.core.annotation.Introspected
 import javax.validation.constraints.NotNull
@@ -21,9 +18,16 @@ data class ChavesRestRequest(
 ) {
 
     companion object {
-        fun toBuscarChaveGrpc(id: Long, cliente: String): ConsultaRequest{
-            val pixId = ConsultaRequest.ConsultaInterna.newBuilder()
+        fun toRemoverChaveGrpc(id: Long, cliente: String): RemoverRequest {
+            return RemoverRequest.newBuilder()
+                .setCliente(cliente)
                 .setPixId(id)
+                .build()
+        }
+
+        fun toBuscarChaveGrpc(cliente: String, pixId: Long): ConsultaRequest {
+            val pixId = ConsultaRequest.ConsultaInterna.newBuilder()
+                .setPixId(pixId)
                 .setClienteId(cliente)
                 .build()
 
@@ -32,6 +36,7 @@ data class ChavesRestRequest(
                 .build()
         }
     }
+
 
     fun toRegistraChaveGrpc(cliente: String): ChaveRequest {
         return ChaveRequest.newBuilder()

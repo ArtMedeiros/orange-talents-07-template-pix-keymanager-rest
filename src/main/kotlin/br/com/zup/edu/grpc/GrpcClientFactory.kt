@@ -1,6 +1,7 @@
 package br.com.zup.edu.grpc
 
 import br.com.zup.edu.ConsultarChaveServiceGrpc
+import br.com.zup.edu.ListarChaveServiceGrpc
 import br.com.zup.edu.RegistrarChaveServiceGrpc
 import br.com.zup.edu.RemoverChaveServiceGrpc
 import io.grpc.ManagedChannel
@@ -19,4 +20,7 @@ open class GrpcClientFactory(@GrpcChannel("chaves") val channel: ManagedChannel)
 
     @Singleton
     fun consultarChave() = ConsultarChaveServiceGrpc.newBlockingStub(channel)
+
+    @Singleton
+    fun listarChaves() = ListarChaveServiceGrpc.newBlockingStub(channel)
 }
